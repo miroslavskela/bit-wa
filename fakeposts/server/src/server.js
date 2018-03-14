@@ -10,7 +10,7 @@ const server = http.createServer((req, res) => {
     res.setHeader('Content-Type', 'application/json');
     res.setHeader('Access-Control-Allow-Origin', 'http://127.0.0.1:5500')
 
-    const jsonData = JSON.stringify(getFakePostData(5))
+    const jsonData = JSON.stringify(getFakePostData(15))
     res.end(jsonData)
 });
 

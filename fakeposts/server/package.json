@@ -1,5 +1,5 @@
 {
-  "name": "Fakeposts",
+  "name": "server",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,13 +7,12 @@
     "start": "nodemon ./src/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "nodemon": "^1.17.2"
-  },
   "dependencies": {
     "lorem-ipsum": "^1.0.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.2"
   }
 }

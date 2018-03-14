@@ -5,4 +5,4 @@ class Post {
         this.intro = intro
     }
 }
-export default Post;
+export {Post} ;
