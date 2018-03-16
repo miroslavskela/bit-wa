@@ -3,7 +3,8 @@ const productList = ["Apple", "Bannana", "Orange"]
 
 // const Myproducts = () => {
 //     const myArrayProducts = [];
-//     productList.forEach((product, index) =>{  
+//     productList.forEach((product, index) =>{ 
+//         const {name} = product; 
        
 //     myArrayProducts.push(<Products name={name} key={index}/>)
 //     })
@@ -13,10 +14,7 @@ const productList = ["Apple", "Bannana", "Orange"]
 
 const Myproducts = () => {
     return productList.map((product, index) => {
-        const {name} = product.toUpperCase();
-        console.log(name);
-        
-        return <Products />
+        return <Products name={product} key={index} />
     })
 }
 
