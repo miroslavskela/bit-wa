@@ -8,6 +8,8 @@ const Header = () => (
 
 const PostItem = (props) => {
     const { title, body } = props;
+    console.log(title);
+    
 
     return (
         <div className="row">
