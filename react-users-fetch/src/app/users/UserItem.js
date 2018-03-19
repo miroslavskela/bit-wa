@@ -1,7 +1,8 @@
 import props from "./UserList"
 import React from 'react';
+
 const UserItem = (props) => {
-    const { name, email, img, dob, key } = props
+    const { name, email, img, dob} = props
     console.log(props);
 
 
