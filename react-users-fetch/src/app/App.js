@@ -4,6 +4,8 @@ import Footer from './partials/Footer'
 import Main from './users/Main'
 import { userService } from './../service/UserService'
 import Search from "./partials/Search"
+import '../App.css';
+import Loader from './loader/Loader'
 
 class App extends Component {
   constructor(props) {
@@ -12,7 +14,8 @@ class App extends Component {
       users: [],
       displayCard: false,
       displayGrid: false,
-      searchValue:[]
+      searchValue:[],
+      Loader:true
   
     }
 
@@ -34,7 +37,9 @@ class App extends Component {
     this.setState.displayGrid = localStorage.setItem("icon", displayGrid)
     this.setState({displayCard})
     this.setState({displayGrid})
+    
   }
+  
   
   
   componentWillMount(){
@@ -48,17 +53,20 @@ class App extends Component {
   }
   //Feature5
   refreshData = (event) => {
+    this.setState({Loader:true})
     event.preventDefault();
     userService.fetchUsers().then(Userlist =>{
-      this.setState({ users: Userlist})
+      this.setState({ users: Userlist,Loader:false})
     })
+   
   }
 
   componentDidMount() {
     userService.fetchUsers()
       .then(UserList => {
-        this.setState({ users: UserList })
+        this.setState({ users: UserList, Loader:false })
       })
+      
   }
 
   onSearchValueChange = (searchValue) => { 
@@ -77,8 +85,8 @@ class App extends Component {
     return (
       <div>
         <Header handleState={this.handleState} displayGrid = {this.state.displayGrid} refreshData= {this.refreshData} />
-        <Search onSearchValueChange={this.onSearchValueChange}/>
-        <Main data={this.getUsers()} displayCard={this.state.displayCard} />
+        {this.state.Loader?false:<Search onSearchValueChange={this.onSearchValueChange}/>}
+        {this.state.Loader?<Loader/>:<Main data={this.getUsers()} displayCard={this.state.displayCard} />}
         <Footer />
       </div>
     );
