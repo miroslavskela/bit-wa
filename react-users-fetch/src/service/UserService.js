@@ -1,12 +1,13 @@
-import React from 'react';
+// import React from 'react';
 import User from './../entities/User'
+import baseUrl from './../shared/constants'
 
 
 class UserService{
 
 
     fetchUsers(){
-        return fetch("https://randomuser.me/api/?results=15")
+        return fetch(baseUrl)
             .then((response) => {
                 return response.json()
             }).then((data) => {
