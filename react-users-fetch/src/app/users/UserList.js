@@ -1,24 +1,23 @@
-import { data } from "./Main"
+
 import UserItem from "./UserItem"
 import UserCard from "./UserCard"
 import React from 'react';
 
-const UsersList = ({ data }) => {
+const UsersList = ({ data, displayCard }) => {
     //console.log("Data userlist", data);
-
-
-    const getDob = (user) => {
-        // console.log("jedan user",user);
-
-        const userDob = user.dob;
-        const date = new Date(userDob);
-        return date.getMonth() + 1 + "-" + date.getDate() + "-" + date.getFullYear();
+    const userList = () => {
+       return data.map((user, index) => <UserItem key={index} gender={user.gender} name={user.name.first + " " + user.name.last}  email={user.email} img={user.picture.large} dob={user.dob} />)
+      
     }
+
+    const userCard = () => {
+     return   data.map((user,index) => <UserCard key={index} gender={user.gender} name={user.name.first + " " + user.name.last} email={user.email} img = {user.picture.large} dob={user.dob} />)
+    }
+    
     return (
         <div className="row">
             <ul className="collection">
-                {data.map((user, index) => <UserItem key={index} name={user.name.first} email={user.email} img={user.picture.large} dob={getDob(user)} />)}
-                {/* {data.map((user,index) => <UserCard key={index} name={user.name.first} email={user.email} img = {user.picture.large} dob={getDob(user)} />)} */}
+               {displayCard? userList():userCard()}
             </ul>
         </div>
     )
